@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
 
-namespace AspNetWebFormsApp
+namespace AspNetWebFormsApp.DICOM
 {
     public class BundleConfig
     {
@@ -29,10 +29,36 @@ namespace AspNetWebFormsApp
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
 
-            // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
+
+            // Use the development version of Modernizr to develop with and learn from. Then, when you're
+            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                            "~/Scripts/modernizr-*"));
+                        "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/respond.js"));
+            
+            bundles.Add(new StyleBundle("~/Content/").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/upload.css") );
+
+            bundles.Add(new ScriptBundle("~/bundles/dicomweb").Include(
+                        "~/Scripts/DICOMwebJS.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                       "~/JSLib/uids.js",
+                       "~/dicomwebjs-demo.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dicomweb-js").Include(
+                      "~/Content/upload.css"));
+
+            BundleTable.EnableOptimizations = true;
 
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",

@@ -1,0 +1,80 @@
+﻿@using DICOMwebJS.Demo.Models
+
+@model List<SelectListItem>
+
+
+@{
+    ViewBag.Title = "DICOMwebJS Demo";
+}
+
+@section navbar_Header_Content
+{   
+    <li>
+        <div> 
+            @Html.Label( "serverList", "Server List:", new {@style="display:inline-block;padding-top:15px;color:white"})
+            @Html.DropDownList( "serverList", Model, new{@class = "form-control", @style = "width:auto;display:inline-block"} )
+        </div>    
+    </li>
+}
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#_QueryFieldsView" aria-controls="_QueryFieldsView" role="tab" data-toggle="tab">Query & Retrieve</a>
+    </li>
+    <li role="presentation">
+        <a href="#_StoreView" aria-controls="_StoreView" role="tab" data-toggle="tab">Store</a>
+    </li>
+    <li role="presentation">
+        <a href="#_ViewerView" aria-controls="_Viewer" role="tab" data-toggle="tab">Viewer</a>
+    </li>
+</ul>
+
+<div class="tab-content clearfix">
+    <div role="tabpanel" class="tab-pane active" id="_QueryFieldsView">
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Click the "Search" button to query the <a href="https://github.com/DICOMcloud/DICOMcloud"><strong>DICOMcloud</strong> DICOMweb server</a> using DICOM <strong>QIDO-RS</strong> service. 
+        </div>
+        <div class="col-sm-2">
+            @Html.Partial("_QueryFieldsView")
+        </div>
+        <div class="col-sm-10">
+            @Html.Partial("_StudyView")
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="_StoreView">
+        @Html.Partial("_StoreView")
+    </div>
+    <div role="tabpanel" class="tab-pane" id="_ViewerView">
+        @Html.Partial("_cornerstoneViewer" );
+
+    </div>
+</div>
+
+
+
+@Html.Partial("_AlertDlg")
+@Html.Partial("_ImageViewer")
+
+@section styles
+{
+    @Styles.Render("~/Content/dicomweb-js" )
+}
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+
+    @if (!string.IsNullOrWhiteSpace(@AppSettings.Current.OhifViewerUrl))
+    {
+        <script>
+            var ohifViewerUrl = "@AppSettings.Current.OhifViewerUrl";
+        </script>
+    }
+
+    @if (ViewBag.maxUpload != null)
+    {
+        <script>var dcloudMaxUpload = @AppSettings.Current.MaxUpload;</script>
+    }
+
+
+}

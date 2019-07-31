@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dbSchema>
+   <tables>
+      <table name="DICOM_PATIENT" order="10" parent=""/>
+      <table name="DICOM_STUDY" order="20" parent="DICOM_PATIENT"/>
+      <table name="DICOM_SERIES" order="30" parent="DICOM_STUDY"/>
+      <table name="DICOM_OBJECT_INSTANCE" order="40" parent="DICOM_SERIES"/>
+   
+      <table name="DICOM_REQUEST_ATTRIBUTE_SEQUENCE" seq="true" tag="4194933" order="70" parent="DICOM_SERIES"/>
+
+   </tables>
+
+   <columns>
+      <column name="PatientKey" table="DICOM_PATIENT" key="true" defenition="[PatientKey] [nvarchar](64) NOT NULL" tag="" />
+      <column name="PatientId" modelKey="true" table="DICOM_PATIENT" defenition="[PatientId] [nvarchar](64) NOT NULL" tag="1048608" />
+      <column name="IssuerOfPatientId" table="DICOM_PATIENT" defenition="[IssuerOfPatientId] [nvarchar](64) NULL" tag="1048609" />
+      <column name="PatientsBirthDate" table="DICOM_PATIENT" isDate="true" defenition="[PatientsBirthDate] [datetime] NULL" tag="1048624" />
+      <column name="PatientsSex" table="DICOM_PATIENT" defenition="[PatientsSex] [char](1) NULL" tag="1048640" />
+      <column name="PatientsName_Family" table="DICOM_PATIENT" defenition="[PatientsName_Family] [nvarchar](64) NULL" tag="1048592" />
+      <column name="PatientsName_Given" table="DICOM_PATIENT" defenition="[PatientsName_Given] [nvarchar](64) NULL" tag="1048592" />
+      <column name="PatientsName_Middle" table="DICOM_PATIENT" defenition="[PatientsName_Middle] [nvarchar](64) NULL" tag="1048592" />
+      <column name="PatientsName_Prefix" table="DICOM_PATIENT" defenition="[PatientsName_Prefix] [nvarchar](64) NULL" tag="1048592" />
+      <column name="PatientsName_Suffix" table="DICOM_PATIENT" defenition="[PatientsName_Suffix] [nvarchar](64) NULL" tag="1048592" />
+      <column name="EthnicGroup" table="DICOM_PATIENT" defenition="[EthnicGroup] [nvarchar](16) NULL" tag="1057120" />
+
+      <column name="StudyKey" table="DICOM_STUDY" key="true" defenition="[StudyKey] [bigint] NOT NULL" tag="" />
+      <column name="Study_PatientKey" foreign="true" table="DICOM_STUDY" defenition="[Study_PatientKey] [bigint] NOT NULL" tag="" />
+      <column name="StudyInstanceUid" modelKey="true" table="DICOM_STUDY" defenition="[StudyInstanceUid] [nchar](64) NOT NULL" tag="2097165" />
+      <column name="StudyId" table="DICOM_STUDY" defenition="[StudyId] [nvarchar](16) NULL" tag="2097168" />
+      <column name="AccessionNumber" table="DICOM_STUDY" defenition="[AccessionNumber] [nvarchar](16) NULL" tag="524368" />
+      <column name="StudyDate" table="DICOM_STUDY" isDate="true" defenition="[StudyDate] [datetime] NULL" tag="524320,524336" />
+      <column name="StudyDescription" table="DICOM_STUDY" defenition="[StudyDescription] [nvarchar](64) NULL" tag="528432" />
+
+      <column name="SeriesKey" table="DICOM_SERIES" key="true" defenition="[SeriesKey] [bigint] NOT NULL" tag="" />
+      <column name="Series_StudyKey" table="DICOM_SERIES" foreign="true" defenition="[Series_StudyKey] [bigint] NOT NULL" tag="" />
+      <column name="SeriesInstanceUid" table="DICOM_SERIES" modelKey="true" defenition="[SeriesInstanceUid] [nchar](64) NOT NULL" tag="2097166" />
+      <column name="SeriesNumber" table="DICOM_SERIES" isNum="true" defenition="[SeriesNumber] [int] NULL" tag="2097169" />
+      <column name="Modality" table="DICOM_SERIES" defenition="[Modality] [char](2) NOT NULL" tag="524384" />
+      <column name="SeriesDescription" table="DICOM_SERIES" defenition="[SeriesDescription] [nchar](64) NULL" tag="528446" />
+
+      <column name="ObjectInstanceKey" table="DICOM_OBJECT_INSTANCE" key="true" defenition="[ObjectInstanceKey] [bigint] NOT NULL" tag="" />
+      <column name="ObjectInstance_SeriesKey" table="DICOM_OBJECT_INSTANCE" foreign="true" defenition="[ObjectInstance_SeriesKey] [bigint] NOT NULL" tag="" />
+      <column name="SopInstanceUid" table="DICOM_OBJECT_INSTANCE" modelKey="true" defenition="[SopInstanceUid] [nchar](64) NOT NULL" tag="524312" />
+      <column name="SopClassUid" table="DICOM_OBJECT_INSTANCE" defenition="[SopClassUid] [nchar](43) NOT NULL" tag="524310" />
+      <column name="InstanceNumber" table="DICOM_OBJECT_INSTANCE" isNum="true" defenition="[InstanceNumber] [int] NULL" tag="2097171" />
+      <column name="Rows" table="DICOM_OBJECT_INSTANCE" isNum="true" defenition="[Rows] [int] NULL" tag="2621456" />
+      <column name="Columns" table="DICOM_OBJECT_INSTANCE" isNum="true" defenition="[Columns] [int] NULL" tag="2621457" />
+      <column name="BitsAllocated" table="DICOM_OBJECT_INSTANCE" isNum="true" defenition="[BitsAllocated] [int] NULL" tag="2621696" />
+      <column name="NumberOfFrames" table="DICOM_OBJECT_INSTANCE" isNum="true" defenition="[NumberOfFrames] [int] NULL" tag="2621448" />
+
+      <column name="Metadata" table="DICOM_OBJECT_INSTANCE" isData="true" defenition="[Metadata] TEXT NULL" tag="" />
+      <column name="Owner" table="DICOM_OBJECT_INSTANCE" defenition="[Owner] NVARCHAR (265) NULL" tag="" />      
+    
+      <column name="Id" table="DICOM_REQUEST_ATTRIBUTE_SEQUENCE" key="true" defenition="[Id] [int] NOT NULL" tag="" />
+      <column name="ScheduledProcedureStepID" table="DICOM_REQUEST_ATTRIBUTE_SEQUENCE" defenition="[ScheduledProcedureStepID] [nvarchar](16) NULL" tag="4194313" />
+      <column name="RequestedProcedureID" table="DICOM_REQUEST_ATTRIBUTE_SEQUENCE" defenition="[RequestedProcedureID] [nvarchar](16) NULL" tag="4198401" />
+      <column name="RequestAttributeSeq_SeriesKey" table="DICOM_REQUEST_ATTRIBUTE_SEQUENCE" modelKey="true" foreign="true" defenition="[RequestAttributeSeq_SeriesKey] [bigint] NOT NULL" tag="" />
+
+   </columns>
+
+</dbSchema>
