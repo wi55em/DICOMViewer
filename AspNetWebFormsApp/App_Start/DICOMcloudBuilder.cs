@@ -15,7 +15,6 @@ using System;
 using fo = Dicom;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
-using DICOMcloud.Wado.WebApi.Exceptions;
 using DICOMcloud.DataAccess.Database;
 using DICOMcloud.Wado.Models;
 using DICOMcloud;
@@ -35,8 +34,7 @@ namespace AspNetWebFormsApp.DICOM
         {
             fo.Log.LogManager.SetImplementation ( TraceLogManager.Instance );
 
-            config.Services.Add ( typeof(IExceptionLogger), new DICOMcloudExceptionLogger()) ;
-            config.Services.Replace(typeof(IExceptionHandler), new DICOMcloudExceptionHandler());
+            
         }
 
         protected virtual void Build ( )

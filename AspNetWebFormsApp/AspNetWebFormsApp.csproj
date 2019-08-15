@@ -50,8 +50,8 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery, Version=2.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.2.2.4\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
@@ -297,6 +297,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\upload.css" />
     <Content Include="Default.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -311,21 +312,23 @@
     <Content Include="Scripts\cornerstone\dicomParser.min.js" />
     <Content Include="dicomwebjs-demo.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
     <Content Include="JSLib\uids.js" />
     <Content Include="Scripts\DICOMwebJS.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
@@ -339,6 +342,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\mode-xml.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -375,24 +379,31 @@
     <Content Include="Views\DICOMMenu\InstanceItem.aspx" />
     <Content Include="Views\DICOMMenu\SeriesItem.aspx" />
     <Content Include="Views\DICOMMenu\StudyItem.aspx" />
+    <Content Include="Views\DICOMViewer2\assets\Button_File.svg" />
+    <Content Include="Views\DICOMViewer2\assets\Button_Folder.svg" />
+    <Content Include="Views\DICOMViewer2\config\default.js" />
+    <Content Include="Views\DICOMViewer2\es6-shim.min.js" />
+    <Content Include="Views\DICOMViewer2\index.html" />
+    <Content Include="Views\DICOMViewer2\oidc-client.min.js" />
+    <Content Include="Views\DICOMViewer2\polyfill.min.js" />
+    <Content Include="Views\DICOMViewer2\precache-manifest.13406ae0aee3b0bb78ed35e763a082ac.js" />
+    <Content Include="Views\DICOMViewer2\service-worker.js" />
+    <Content Include="Views\DICOMViewer2\silent-refresh.html" />
+    <Content Include="Views\DICOMViewer2\static\css\main.1d7a3ea5.chunk.css" />
+    <Content Include="Views\DICOMViewer2\static\js\2.071736ad.chunk.js" />
+    <Content Include="Views\DICOMViewer2\static\js\main.bb8e65b6.chunk.js" />
+    <Content Include="Views\DICOMViewer2\static\js\runtime~main.a8a9905a.js" />
     <Content Include="Views\DICOMViewer\assets\Button_File.svg" />
     <Content Include="Views\DICOMViewer\assets\Button_Folder.svg" />
+    <Content Include="Views\DICOMViewer\bundle.bundle.ba76eaa89fef64566be7.js" />
     <Content Include="Views\DICOMViewer\config\default.js" />
-    <Content Include="Views\DICOMViewer\cornerstoneWADOImageLoader.min.js" />
-    <Content Include="Views\DICOMViewer\cornerstoneWADOImageLoaderCodecs.min.js" />
-    <Content Include="Views\DICOMViewer\cornerstoneWADOImageLoaderWebWorker.min.js" />
     <Content Include="Views\DICOMViewer\es6-shim.min.js" />
     <Content Include="Views\DICOMViewer\index.html" />
-    <Content Include="Views\DICOMViewer\logout-redirect.html" />
     <Content Include="Views\DICOMViewer\oidc-client.min.js" />
     <Content Include="Views\DICOMViewer\polyfill.min.js" />
-    <Content Include="Views\DICOMViewer\precache-manifest.68e1402d2972db089add311b049111c6.js" />
-    <Content Include="Views\DICOMViewer\service-worker.js" />
+    <Content Include="Views\DICOMViewer\precache-manifest.e92deac26ea2b5a6c72c9355d945657d.js" />
     <Content Include="Views\DICOMViewer\silent-refresh.html" />
-    <Content Include="Views\DICOMViewer\static\css\main.e15eb8d8.chunk.css" />
-    <Content Include="Views\DICOMViewer\static\js\2.f6e962ff.chunk.js" />
-    <Content Include="Views\DICOMViewer\static\js\main.80e749d1.chunk.js" />
-    <Content Include="Views\DICOMViewer\static\js\runtime~main.a8a9905a.js" />
+    <Content Include="Views\DICOMViewer\sw.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -432,14 +443,10 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Exceptions\DICOMcloudExceptionHandler.cs" />
-    <Compile Include="Exceptions\DICOMcloudExceptionLogger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\MimeTypes.cs" />
-    <Compile Include="Models\ServersViewModel.cs" />
     <Compile Include="Models\ToolbarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -492,19 +499,18 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\DICOMViewer\static\css\main.e15eb8d8.chunk.css.map" />
-    <Content Include="Views\DICOMViewer\static\js\2.f6e962ff.chunk.js.map" />
-    <Content Include="Views\DICOMViewer\static\js\main.80e749d1.chunk.js.map" />
-    <Content Include="Views\DICOMViewer\static\js\runtime~main.a8a9905a.js.map" />
-    <Content Include="Views\DICOMViewer\asset-manifest.json" />
-    <Content Include="Views\DICOMViewer\cornerstoneWADOImageLoader.min.js.map" />
-    <Content Include="Views\DICOMViewer\cornerstoneWADOImageLoaderWebWorker.min.js.map" />
-    <Content Include="Views\DICOMViewer\manifest.json" />
+    <Content Include="Views\DICOMViewer2\static\js\runtime~main.a8a9905a.js.map" />
+    <Content Include="Views\DICOMViewer2\asset-manifest.json" />
+    <Content Include="Views\DICOMViewer2\manifest.json" />
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\DICOMViewer2\static\css\main.1d7a3ea5.chunk.css.map" />
+    <Content Include="Views\DICOMViewer2\static\js\2.071736ad.chunk.js.map" />
+    <Content Include="Views\DICOMViewer2\static\js\main.bb8e65b6.chunk.js.map" />
+    <Content Include="Views\DICOMViewer\manifest.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

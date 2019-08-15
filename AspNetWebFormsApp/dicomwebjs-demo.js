@@ -880,19 +880,7 @@ var app = (function () {
         $('.nav-tabs a[href="#_ViewerView"]').tab('show');
         viewer.refresh();
     };
-    //public initViewer() {
-    //   // base function to get elements
-    //   dwv.gui.getElement = dwv.gui.base.getElement;
-    //   dwv.gui.displayProgress = function (percent) { };
-    //   // create the dwv app
-    //   var viewer = new dwv.App();
-    //   // initialise with the id of the container div
-    //   viewer.init({
-    //      "containerDivId": "dwv",
-    //      "tools": ["WindowLevel"], // or try "ZoomAndPan"
-    //   });
-    //   return viewer;
-    //}
+
     app.prototype.initAuthentication = function () {
         var token = this.getAuthenticationToken();
         if (token) {
@@ -903,7 +891,7 @@ var app = (function () {
     app.prototype.getAuthenticationToken = function () {
         var name = this.__AUTHENTICATION_COOKIE;
         //http://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
-        //function readCookie(name) {
+        
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
@@ -914,7 +902,7 @@ var app = (function () {
                 return c.substring(nameEQ.length, c.length);
         }
         return null;
-        //}
+       
     };
     return app;
 }());

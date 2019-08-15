@@ -459,6 +459,7 @@ var DICOMwebJS;
         ServerConfiguration.getDelowRsUrl = getDelowRsUrl;
 
         function getOhifJsonEndpoint(studyInstanceUid) {
+            // Wissem: path of a study
             return "Views/DICOMViewer/viewer/" + studyInstanceUid;
         }
         ServerConfiguration.getOhifJsonEndpoint = getOhifJsonEndpoint;

@@ -43,20 +43,7 @@ namespace AspNetWebFormsApp.DICOM
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
-            
-            bundles.Add(new StyleBundle("~/Content/").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/upload.css") );
-
-            bundles.Add(new ScriptBundle("~/bundles/dicomweb").Include(
-                        "~/Scripts/DICOMwebJS.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                       "~/JSLib/uids.js",
-                       "~/dicomwebjs-demo.js"));
-
-            bundles.Add(new StyleBundle("~/Content/dicomweb-js").Include(
-                      "~/Content/upload.css"));
+           
 
             BundleTable.EnableOptimizations = true;
 

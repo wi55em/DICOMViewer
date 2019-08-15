@@ -2,6 +2,10 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <script src="Scripts/jquery-2.2.4.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="Scripts/respond.js" type="text/javascript"></script>
+
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="Scripts/modernizr-2.6.2.js"></script>
     <link href="Content/upload.css" rel="stylesheet" />
@@ -15,12 +19,14 @@
     <script src="dicomwebjs-demo.js"></script>
     <script src="Scripts/ace.js"></script>
 
+    <!-- Wissem: This script queries through studies on page load -->
     <script>
         jQuery(function () {
             jQuery('#searchButton').click();
         });
     </script>
 
+    <!-- Defines baseURL of serverList to "". Value was set to "http:localhost:55914" but now the server is embedded in the app. -->
     <div style="display: none">
         <label for="serverList" style="display: inline-block; color: black; padding: 10px">Server List:</label>
         <select class="form-control" id="serverList" name="serverList" style="width: auto; display: none">
@@ -34,68 +40,67 @@
         </div>
     </div>
 
-
     <div role="tabpanel" class="tab-pane active" id="_QueryFieldsView" style="padding-top: 2%">
-        <div class="alert alert-info alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Click the "Search" button to query the <strong>our DICOM server</strong> using DICOM <strong>QIDO-RS</strong> service. 
-        </div>
-
-        <div class="col-sm-2">
-            <div class="form-group">
-                <label for="patientIdInput">Patient ID</label>
-                <input type="text" class="form-control  color-fill-dim-mid-alt" id="patientIdInput" placeholder="(e.g. 123-45-6789)" />
-            </div>
-            <div class="form-group">
-                <label for="patientNameInput">Patient Name</label>
-                <input type="text" class="form-control" id="patientNameInput" placeholder="(e.g. John)" />
-            </div>
-            <div class="form-group">
-                <label for="studyDateInput">Study Date</label>
-                <input type="datetime" class="form-control" id="studyDateInput" placeholder="(e.g. 20120502)" />
-            </div>
-            <div class="form-group">
-                <label for="studyIdInput">Study ID</label>
-                <input type="text" class="form-control" id="studyIdInput" placeholder="(e.g. 1)" />
-            </div>
-
-            <button type="submit" id="searchButton" class="btn btn-default">Search</button>
-        </div>
-        <div class="col-sm-10">
-            <div class="panel-group">
-                <div class="panel panel-default study-view clearfix">
-                    <div class="panel-heading studies-title clearfix">
-                        <a data-toggle="collapse" href="#studyCollapse">
-
-                            <h3 class="panel-title">
-                                <span>Studies</span>
-                                <span class="study-overview"></span>
-                                <span class="badge pull-right" data-pacs-study-count>0</span>
-                            </h3>
-                        </a>
+        <div class="panel panel-info">
+            <div class="panel-heading">Search</div>
+            <div class="panel-body">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="patientIdInput">Patient ID</label>
+                        <input type="text" class="form-control  color-fill-dim-mid-alt" id="patientIdInput" placeholder="(e.g. 123-45-6789)" />
                     </div>
+                    <div class="form-group">
+                        <label for="patientNameInput">Patient Name</label>
+                        <input type="text" class="form-control" id="patientNameInput" placeholder="(e.g. John)" />
+                    </div>
+                    <div class="form-group">
+                        <label for="studyDateInput">Study Date</label>
+                        <input type="datetime" class="form-control" id="studyDateInput" placeholder="(e.g. 20120502)" />
+                    </div>
+                    <div class="form-group">
+                        <label for="studyIdInput">Study ID</label>
+                        <input type="text" class="form-control" id="studyIdInput" placeholder="(e.g. 1)" />
+                    </div>
+                    <!-- Wissem: button that queries through the server's studies -->
+                    <button type="submit" id="searchButton" class="btn btn-default">Search</button>
+                </div>
+                <div class="col-sm-10">
+                    <div class="panel-group">
+                        <div class="panel panel-default study-view clearfix">
+                            <div class="panel-heading studies-title clearfix">
+                                <a data-toggle="collapse" href="#studyCollapse">
 
-                    <div id="studyCollapse" class="panel-collapse collapse in">
-                        <nav aria-label="...">
-                            <ul class="pagination pagination-study" style="margin: 0">
-                                <li class="page-item disabled page-first">
-                                    <a class="page-link" href="#" tabindex="-1">First</a>
-                                </li>
-                                <li class="page-item disabled page-previous">
-                                    <a class="page-link" href="#">Previous</a>
-                                </li>
-                                <li class="page-item">
-                                    <span class="page-info"></span>
-                                </li>
-                                <li class="page-item disabled page-next">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                                <li class="page-item disabled page-last">
-                                    <a class="page-link" href="#">Last</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="panel-body dicomWeb-js studies-query"></div>
+                                    <h3 class="panel-title">
+                                        <span>Studies</span>
+                                        <span class="study-overview"></span>
+                                        <span class="badge pull-right" data-pacs-study-count>0</span>
+                                    </h3>
+                                </a>
+                            </div>
+
+                            <div id="studyCollapse" class="panel-collapse collapse in">
+                                <nav aria-label="...">
+                                    <ul class="pagination pagination-study" style="margin: 0">
+                                        <li class="page-item disabled page-first">
+                                            <a class="page-link" href="#" tabindex="-1">First</a>
+                                        </li>
+                                        <li class="page-item disabled page-previous">
+                                            <a class="page-link" href="#">Previous</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <span class="page-info"></span>
+                                        </li>
+                                        <li class="page-item disabled page-next">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                        <li class="page-item disabled page-last">
+                                            <a class="page-link" href="#">Last</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="panel-body dicomWeb-js studies-query"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,9 +147,11 @@
                         </span>
                         <input id="displayName" type="text" class="form-control" readonly>
                         <span>
+                            <!-- Button to upload DCM file to server -->
                             <input id="addFileButton" type="button" class="btn btn-default" value="Upload" />
                         </span>
                     </div>
+                    <!-- Mozilla happens to be able to upload 500MB at one time. Chrome crashes with more that 100MB. Limited by bytearray usage -->
                     <p><span class="text-danger">*You can upload up to 100MB of DICOM files at one time. If you need to upload bigger files, please contact the support.</span></p>
                     <div class="store-result-view">
                         <hr />
